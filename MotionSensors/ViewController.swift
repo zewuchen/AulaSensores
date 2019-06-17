@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     var referenceAttitude:CMAttitude?
     
+    //Gasta bateria, cria e não inicia os sensores, precisa dizer que vai iniciar os sensores
     let motion = CMMotionManager()
     
     var lastXUpdate = 0
@@ -36,6 +37,7 @@ class ViewController: UIViewController {
             self.motion.deviceMotionUpdateInterval = 1.0 / 60.0
             self.motion.showsDeviceMovementDisplay = true
             //A partir da chamada desta função, o objeto motion passa a conter valores atualizados dos sensores; o parâmetro representa a referência para cálculo de orientação do dispositivo
+            //Só vai parar de usar os sensores quando fechar o app
             self.motion.startDeviceMotionUpdates(using: .xMagneticNorthZVertical)
             
             //Um Timer é configurado para executar um bloco de código 60 vezes por segundo - a mesma frequência das atualizações dos dados de sensores. Neste bloco manipulamos as informações mais recentes para atualizar a interface.
